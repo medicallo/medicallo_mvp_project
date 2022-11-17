@@ -18,7 +18,7 @@ class Card:
 
 # CREATE
     @classmethod
-    def create_user(cls,data):
+    def create_card(cls,data):
         query = "INSERT INTO cards (name,photo) VALUES (%(name)s,%(photo)s);"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
@@ -36,7 +36,7 @@ class Card:
 
 
     @classmethod
-    def get_one_by_id(cls,data):
+    def get_card_by_id(cls,data):
         query="SELECT * FROM cards WHERE id = %(id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
         return cls(result[0])

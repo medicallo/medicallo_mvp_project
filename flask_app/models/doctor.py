@@ -42,7 +42,7 @@ class Doctor:
 
         
     @classmethod
-    def get_one_by_id(cls,data):
+    def get_doctor_by_id(cls,data):
         query="SELECT * FROM doctors WHERE id = %(id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
         return cls(result[0])

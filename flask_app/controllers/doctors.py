@@ -23,10 +23,20 @@ def doctor_edit():
     return redirect('/admin/dashboard')
 
 
-@app.route('/doctor/delete', methods=['POST'] )
-def doctor_edit():
-    Doctor.destroy(request.form)
-    print('*'*20,Doctor.destroy(request.form))
+# Delete
+@app.route('/doctor/delete/<int:id>')
+def hospital_delete(id):
+    data={'id':id}
+
+    Doctor.destroy(data)
     return redirect('/admin/dashboard')
+
+# Edit
+@app.route('/hospital/edit/<int:id>')
+def doctor_edit_template(id):
+    data={'id':id}
+    Doctor.get_doctor_by_id(data)
+    return render_template('doctor_edit.html',doc=Doctor.get_doctor_by_id(data))
+
 
 
