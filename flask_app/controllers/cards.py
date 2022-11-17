@@ -9,18 +9,18 @@ def car():
     return render_template('admin_dashboard.html',cards=cards)
 
 
-# @app.route('card',methods=['POST'])
-# def card_add():
-#     Card.create_card(request.form)
-#     print('*'*20,Card.create_card(request.form))
-#     return redirect('/admin/dashboard')
+@app.route('/card',methods=['POST'])
+def doctor():
+    Card.create_card(request.form)
+    print('*'*20,Card.create_card(request.form))
+    return redirect('/admin/dashboard')
 
 
-# @app.route('/card/edit', methods=['POST'] )
-# def card_edit():
-#     Card.update_card(request.form)
-#     print('*'*20,Card.update(request.form))
-#     return redirect('/admin/dashboard')
+@app.route('/card/edit', methods=['POST'] )
+def card_edit():
+    Card.update(request.form)
+    print('*'*20,Doctor.update(request.form))
+    return redirect('/admin/dashboard')
 
 
 # # Delete
