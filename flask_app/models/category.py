@@ -16,14 +16,14 @@ class Category:
 
 # CREAT
     @classmethod
-    def save(cls,data):
+    def create_category(cls,data):
         query = "INSERT INTO categories (name, card_id) VALUES (%(name)s,%(card_id)s);"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
 
 # Read
     @classmethod
-    def get_all(cls):
+    def get_all_categories(cls):
         query="SELECT * FROM categories;"
         results=connectToMySQL(cls.db_name).query_db(query)
         users=[]
@@ -33,19 +33,19 @@ class Category:
 
         
     @classmethod
-    def get_one_by_id(cls,data):
+    def get_category_by_id(cls,data):
         query="SELECT * FROM categories WHERE id = %(id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
         return cls(result[0])
 
 # UPDATE
     @classmethod
-    def update(cls, data):
+    def update_category(cls, data):
         query = "UPDATE categories SET name=%(name)s, card_id=%(card_id)s WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
     
 # DELETE
     @classmethod
-    def destroy(cls,data):
+    def destroy_category(cls,data):
         query = "DELETE FROM categories WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)

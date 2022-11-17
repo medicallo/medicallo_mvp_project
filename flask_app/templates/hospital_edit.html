@@ -28,6 +28,7 @@
             <label for="photo" class="form-label">Photo:</label>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="inputGroupFile02" name="photo">
+                <input type="hidden" value="{{hos.photo}}" name="old_photo">
                 <label class="input-group-text" for="inputGroupFile02" >Upload</label>
             </div>
         <button type="submit" class="btn btn-success">Update</button>

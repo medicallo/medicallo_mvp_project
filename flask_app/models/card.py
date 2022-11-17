@@ -44,12 +44,12 @@ class Card:
 
 # UPDATE
     @classmethod
-    def update(cls, data):
+    def update_card(cls, data):
         query = "UPDATE cards SET name=%(name)s, photo=%(photo)s WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
     
 # DELETE
     @classmethod
-    def destroy(cls,data):
+    def destroy_card(cls,data):
         query = "DELETE FROM cards WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)

@@ -1,5 +1,5 @@
 from flask_app import app
-from flask_app.controllers import hospitals, users,cards,doctors
+from flask_app.controllers import hospitals,users,cards,doctors,categories,diseases
 
 
 
