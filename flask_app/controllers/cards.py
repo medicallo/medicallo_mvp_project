@@ -9,7 +9,7 @@ def car():
     return render_template('admin_dashboard.html',cards=cards)
 
 
-@app.route('card',methods=['POST'])
+@app.route('/card',methods=['POST'])
 def doctor():
     Card.create_card(request.form)
     print('*'*20,Card.create_card(request.form))

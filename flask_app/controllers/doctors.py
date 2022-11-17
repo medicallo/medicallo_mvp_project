@@ -13,10 +13,10 @@ def get_doc():
 
     return render_template('admin_dashboard.html', all_doctors=session['hospital_id'])
 
-@app.route('/doctor',methods=['POST'])
-def doctor():
+# @app.route('/doctor',methods=['POST'])
+# def doctor():
     
-    return redirect('/admin/dashboard')
+#     return redirect('/admin/dashboard')
 
 
 @app.route('/doctor/edit', methods=['POST'] )
