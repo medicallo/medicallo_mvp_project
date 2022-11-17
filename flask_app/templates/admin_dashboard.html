@@ -76,8 +76,8 @@
                 <td>{{hospital.name}}</td>
                 <td ><img style="width: 40px;height: 40px;" src="../static/images/{{hospital.photo}}" alt="hospital photo"> </td>
                 <td>{{hospital.location}}</td>
-                <td><button type="button" class="btn btn-warning">Edit</button></td>
-                <td><button type="button" class="btn btn-dark">Delete</button></td>
+                <td><a href="/hospital/edit/{{hospital.id}}"><button onclick="openEdit()" type="button" class="btn btn-warning">Edit</button></a></td>
+                <td><a href="/hospital/delete/{{hospital.id}}"><button type="button" class="btn btn-dark">Delete</button></a></td>
             </tr>
             {% endfor %}
         
@@ -111,12 +111,12 @@
 
 <!-- EDIT -->
 <div class="loginPopup">
-    <div class="formPopup" id="popupForm"  data-role="popup" data-position-to="window">
-        <form class="formContainer" action="/hospital/edit" method="post">
+    <div class="formPopup" id="popupEdit"  data-role="popup" data-position-to="window">
+        <form class="formContainer" action="/hospital/edit/{{hospitals.id}}" method="post">
             <div class="mb-3">
                 <input type="hidden" value="">
                 <label for="Name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="Name" name="name" >
+                <input type="text" class="form-control" id="Name" name="name" >{{hospitals.name}}
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Photo Link</span>
@@ -124,10 +124,10 @@
             </div>
             <div class="mb-3">
                 <label for="Location" class="form-label">Location:</label>
-                <input type="text" class="form-control" id="Location" name="location">
+                <input type="text" class="form-control" id="Location" name="location">{{hospitals.location}}
             </div>
-        <button type="submit" class="btn btn-primary add" onclick="closeForm()">Update</button>
-        <input type="button" class="btn btn-primary mt-2" onclick="closeForm()" value="Cancel">
+        <button type="submit" class="btn btn-primary add" onclick="closeEdit()">Update</button>
+        <input type="button" class="btn btn-primary mt-2" onclick="closeEdit()" value="Cancel">
         
         </form>
     </div>

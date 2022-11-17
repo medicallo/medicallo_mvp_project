@@ -1,5 +1,5 @@
 from flask_app import app
-from flask_app.controllers import users , admin_cont
+from flask_app.controllers import hospitals, users
 
 
 

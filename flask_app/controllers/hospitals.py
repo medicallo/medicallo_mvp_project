@@ -4,20 +4,32 @@ from flask_app import app
 # bcrypt = Bcrypt(app)
 from flask_app.models.hospital import Hospital
 
+# Dashboard
 @app.route('/admin/dashboard')
 def admin():
     hospitals=Hospital.get_all_hospital()
     
     return render_template('admin_dashboard.html',hospitals=hospitals)
 
+# Create
 @app.route('/hospital', methods=['POST'] )
 def hospital():
     Hospital.create_hospital(request.form)
-    print('*'*20,Hospital.create_hospital(request.form))
     return redirect('/admin/dashboard')
 
-@app.route('/hospital/edit', methods=['POST'] )
-def hospital_edit():
+# Edit
+@app.route('/hospital/edit/<int:id>', methods=['POST'] )
+def hospital_edit(id):
     Hospital.update_hospital(request.form)
-    print('*'*20,Hospital.create_hospital(request.form))
-    return redirect('/admin/dashboard')
+    data={'id':id}
+    Hospital.get_hospital_by_id(data)
+    return redirect('/admin/dashboard',hos=Hospital.get_hospital_by_id(data))
+
+# Delete
+@app.route('/hospital/delete/<int:id>')
+def hospital_delete(id):
+    data={'id':id}
+    print('*'*20,data)
+
+    Hospital.destroy_hospital(data)
+    redirect('/admin/dashboard')
