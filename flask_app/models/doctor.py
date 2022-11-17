@@ -24,7 +24,7 @@ class Doctor:
 
 # CREAT
     @classmethod
-    def create_user(cls,data):
+    def create_doctor(cls,data):
         query = "INSERT INTO doctors (first_name,last_name,photo,speciality,hospital_id) VALUES (%(first_name)s,%(last_name)s,%(photo)s,%(speciality)s,%(hospital_id)s);"
         return connectToMySQL(cls.db_name).query_db(query, data)
 

@@ -1,0 +1,135 @@
+.category1{
+height: 230px;
+width: 230px;
+background-color: rgb(255, 255, 255);
+background-image: url(pexels-andrea-piacquadio-3752834.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+
+
+}
+.category2{
+height: 230px;
+width: 230px;
+background-color: rgb(255, 255, 255);
+background-image: url(istockphoto-1199684960-612x612.JPG);
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+.block1{
+    display: flex;
+    margin-top: 40px;
+    margin-left: 410px;
+    gap: 20px;
+
+}
+.block2{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 410px;
+    gap: 20px;
+
+}
+
+
+.category3{
+    height: 230px;
+    width: 230px;
+    background-color: rgb(255, 255, 255);
+    background-image: url(321185_2200-732x549.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    }
+.category4{
+    
+    height: 230px;
+    width: 230px;
+    background-color: rgb(255, 255, 255);
+    background-image: url(Symptoms-of-PAD-1.JPG);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.options {
+    display: flex;
+    margin-left: 330px;
+    margin-top:20px;
+    gap: 170px;
+}
+.op {
+    height: 100px;
+    width: 100px;
+    background-color: #00B8D3 ;
+    border-radius:#ffffff bold 12px;
+
+
+}
+.doc{
+    height: 350px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.hos{
+    height: 350px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 50px;
+}
+.lin{
+    height: 350px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 50px;
+}
+.img1{
+    height: 200px;
+    width: 230px;
+
+}
+.img2{ 
+    height: 370px;
+    width: 230px;
+    
+
+}
+.img3{ 
+    height: 370px;
+    width: 230px;
+    
+
+}
+.img4{ 
+    height: 70px;
+    width: 230px;
+    
+
+}
+.theall{
+    background-color:#ffffff;
+}
+.tr{
+height: 230px;
+width: 230px;
+background-color: black;
+opacity: 30%;
+
+}
+.titre{
+    color: #ffffff;
+}
+.ci{
+    
+}
+.hoss{
+    height: 350px;
+    
+}
+.docc{
+    margin-bottom: 30px;
+
+}
+.logo{
+    height:60px;
+
+}
