@@ -4,7 +4,7 @@ from flask_app.models.disease import Disease
 
 # Dashboard
 @app.route('/admin/dashboard')
-def admin():
+def admin_ds():
     diseases=Disease.get_all_diseases()
     
     return render_template('admin_dashboard.html',diseases=diseases)

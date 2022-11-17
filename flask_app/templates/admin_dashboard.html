@@ -76,7 +76,7 @@
                 <td>{{hospital.name}}</td>
                 <td ><img style="width: 40px;height: 40px;" src="../static/images/{{hospital.photo}}" alt="hospital photo"> </td>
                 <td>{{hospital.location}}</td>
-                <td><a href="/hospital/edit/{{hospital.id}}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                <td><a href="/hospital/edit/{{hospital.id}}"><button type="button" class="btn btn-success">Edit</button></a></td>
                 <td><a href="/hospital/delete/{{hospital.id}}"><button type="button" class="btn btn-dark">Delete</button></a></td>
             </tr>
             {% endfor %}
@@ -109,29 +109,6 @@
     </div>
 </div>
 
-<!-- EDIT -->
-<div class="loginPopup">
-    <div class="formPopup" id="popupEdit"  data-role="popup" data-position-to="window">
-        <form class="formContainer" action="/hospital/edit/{{hospitals.id}}" method="post">
-            <div class="mb-3">
-                <input type="hidden" value="">
-                <label for="Name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="Name" name="name" >{{hospitals.name}}
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Photo Link</span>
-                <input  class="form-control" name="photo" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="mb-3">
-                <label for="Location" class="form-label">Location:</label>
-                <input type="text" class="form-control" id="Location" name="location">{{hospitals.location}}
-            </div>
-        <button type="submit" class="btn btn-primary add" onclick="closeEdit()">Update</button>
-        <input type="button" class="btn btn-primary mt-2" onclick="closeEdit()" value="Cancel">
-        
-        </form>
-    </div>
-</div>
 
 <!-- Doctor Table -->
 <div id="doctor" class="container mt-5" style="height: 100vh; margin-right: 10rem;">
@@ -141,17 +118,40 @@
             <button onclick="openForm1()" class="openButton btn btn-success" >Add New Doctor</button>
         </div>
     </div>
+    <form action="/doctor_table" method="post">
+        <div class="d-flex align-items-center gap-5 mb-5">
+            <label for="select"><strong>Hospital:</strong></label>
+            <select id="hospital" name="hospital_id">
+                {% for hospital in hospitals %}
+                <option value={{hospital.id}}>{{hospital.name}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Select" class="btn btn-primary">
+        </div>
+    </form>
     <table class="table text-center">
         <thead class="table-dark">
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Photo</th>
-        <th>Speciality</th>
-        <th>Actions</th>
-        <th>Delete</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Photo</th>
+            <th>Speciality</th>
+            <th>Actions</th>
+            <th>Delete</th>
         </thead>
         <tbody>
-        <th>hi</th>
+            
+            {% for doctor in session['hospital_id'] %}
+            <tr>
+                <td>{{doctor.first_name}}</td>
+                <td>{{doctor.last_name}}</td>
+                <td>{{doctor.photo}}</td>
+                <td>{{doctor.speciality}}</td>
+                
+                <td><a href="/doctor/edit/{{doctor.id}}"><button type="button" class="btn btn-success">Edit</button></a></td>
+                <td><a href="/doctor/delete/{{doctor.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+
         </tbody>
     </table>
 </div>
@@ -159,11 +159,14 @@
 <div class="loginPopup">
     <div class="formPopup" id="popupForm1">
         <form class="formContainer" action="/doctor" method="post">
-            <select name="doctor_id">
-                {% for hospital in all_hospitals %}
+            <div class="mb-3">
+            <label class="me-3" for="hospital">Name of The Hospital: </label>
+            <select id="hospital" name="hospital_id">
+                {% for hospital in hospitals %}
                 <option value={{hospital.id}}>{{hospital.name}}</option>
                 {% endfor %}
             </select>
+            </div>
             <div class="mb-3">
                 <label for="FirstalName" class="form-label">First Name:</label>
                 <input type="text" class="form-control" id="FirstaName" name="first_name" >
@@ -180,8 +183,12 @@
                 <label for="Speciality" class="form-label">Speciality</label>
                 <input type="text" class="form-control" id="Speciality" name="speciality">
             </div>
-        <button type="submit" class="btn btn-primary" onclick="closeForm1()">ADD</button>
-        <button class="btn btn-primary" onclick="closeForm1()">Cancel</button>
+            <div class="mb-3">
+                <label for="about" class="form-label">About</label>
+                <input type="text" class="form-control" id="about" name="about">
+            </div>
+            <button type="submit" class="btn btn-primary add" onclick="closeForm()">ADD</button>
+            <input type="button" class="btn btn-primary mt-2" onclick="closeForm()" value="Cancel">
         
         </form>
 
