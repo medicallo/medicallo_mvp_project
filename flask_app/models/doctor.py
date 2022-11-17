@@ -60,6 +60,7 @@ class Doctor:
     @classmethod
     def update_doctor(cls, data):
         query = "UPDATE doctors SET first_name=%(first_name)s, last_name=%(last_name)s, photo=%(photo)s, speciality=%(speciality)s, about=%(about)s, hospital_id=%(hospital_id)s WHERE id = %(id)s;"
+        print('*'*20,query)
         return connectToMySQL(cls.db_name).query_db(query,data)
     
 # DELETE

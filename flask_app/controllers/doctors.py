@@ -19,12 +19,6 @@ def doctor():
     return redirect('/admin/dashboard')
 
 
-@app.route('/doctor/edit', methods=['POST'] )
-def doctor_edit():
-    Doctor.update_doctor(request.form)
-    print('*'*20,Doctor.update_doctor(request.form))
-    return redirect('/admin/dashboard')
-
 
 # Delete
 @app.route('/doctor/delete/<int:id>')
@@ -37,7 +31,16 @@ def doctor_delete(id):
 @app.route('/doctor/edit/<int:id>')
 def doctor_edit_template(id):
     data={'id':id}
-    return render_template('doctor_edit.html',doc=Doctor.get_doctor_by_id(data))
+    print('*'*50,data)
+
+    return render_template('doctor_edit.html',doctorandom=Doctor.get_doctor_by_id(data))
+
+
+@app.route('/doctor/edit', methods=['POST'] )
+def doctor_edit():
+    Doctor.update_doctor(request.form)
+    print('*'*20,Doctor.update_doctor(request.form))
+    return redirect('/admin/dashboard')
 
 
 
