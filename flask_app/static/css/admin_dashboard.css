@@ -1,0 +1,41 @@
+
+
+.loginPopup {
+position: relative;
+text-align: center;
+width: 100%;
+}
+.formPopup {
+display: none;
+position: fixed;
+left: 45%;
+top: 5%;
+transform: translate(-50%, 5%);
+border: 3px solid #999999;
+z-index: 9;
+}
+.formContainer {
+max-width: 500px;
+padding: 20px;
+background-color: #fff;
+}
+
+
+.formContainer .add {
+padding: 12px 20px;
+border: none;
+background-color: #8ebf42;
+color: #fff;
+cursor: pointer;
+width: 100%;
+margin-bottom: 15px;
+opacity: 0.8;
+}
+
+.formContainer .add .btn:hover,
+.openButton:hover {
+opacity: 1;
+}
+li:hover , .logout:hover {
+    scale: 1.2;
+}

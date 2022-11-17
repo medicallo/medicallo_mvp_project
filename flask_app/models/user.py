@@ -1,13 +1,13 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
-from flask import flash
-import re
-from flask_bcrypt import Bcrypt
-bcrypt = Bcrypt(app) 
-EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
+# from flask import flash
+# import re
+# from flask_bcrypt import Bcrypt
+# bcrypt = Bcrypt(app) 
+# EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 class User:
-    db_name ="black"
+    db_name ="doc"
     def __init__(self,data):
         self.id=data['id']
         self.first_name=data ['first_name']
@@ -16,8 +16,8 @@ class User:
         self.password=data['password']
         self.created_at=data['created_at']
         self.updated_at=data['updated_at']
-
-        self.show = []
+        self.admin_id=data['admin_id']
+        self.users = 0
     @classmethod
     def create_user(cls,data):
         query = "INSERT INTO users (first_name,last_name,email,password) VALUES (%(first_name)s,%(last_name)s,%(email)s, %(password)s);"
@@ -91,12 +91,3 @@ class User:
             user.show.append( Show( show_data ) )
         return user
     
-    @classmethod
-    def like_show(cls,data):
-        query = "INSERT INTO likes ( user_id,show_id ) VALUES (%(user_id)s,%(show_id)s);"
-        return connectToMySQL(cls.db_name).query_db(query, data)
-    
-    @classmethod
-    def unlike_show(cls,data):
-        query ="DELETE FROM likes WHERE show_id = %(id)s AND user_id = %(user_id)s;"
-        return connectToMySQL(cls.db_name).query_db(query, data)
