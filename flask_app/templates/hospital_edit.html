@@ -9,27 +9,33 @@
 
 
 </head>
-<body>
-    <div class="container">
-        <form class="formContainer bg-dark text-white" action="/card" method="post">
+<body class="bg-secondary bg-opacity-15">
+    <div class="container w-50 my-5">
+        <div class="text-center">
+            <img style="width:600px; height: 350px;" class="rounded my-3" src="{{ url_for('static', filename='images/' + hos.photo) }}" alt="photo of the hospital">
+
+        </div>
+        <form class="formContainer bg-dark text-white p-3" action="/hospital/edit" method="post">
             <div class="mb-3">
+                <input type="hidden" value="{{hos.id}}" name="id">
                 <label for="Name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="Name" name="name" >
+                <input type="text" class="form-control" id="Name" name="name" value="{{hos.name}}">
             </div>
             <div class="mb-3">
-                <label for="location class="form-label">Location:</label>
-                <input type="text" class="form-control" id="location" name="location" >
+                <label for="location" class="form-label">Location:</label>
+                <input type="text" class="form-control" id="location" name="location" value="{{hos.location}}">
             </div>
+            <label for="photo" class="form-label">Photo:</label>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="inputGroupFile02" name="photo">
                 <label class="input-group-text" for="inputGroupFile02" >Upload</label>
             </div>
-        <button type="submit" class="btn btn-primary add" onclick="closeForm2()">Update</button>
-        <button class="btn btn-primary" onclick="closeForm2()">Cancel</button>
+        <button type="submit" class="btn btn-success">Update</button>
+        <a href="/admin/dashboard"><input type="button" class="btn btn-primary" value="Cancel"></a>
         
         </form>
     
-</div>
+    </div>
     
 </body>
 </html>

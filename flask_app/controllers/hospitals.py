@@ -18,18 +18,23 @@ def hospital():
     return redirect('/admin/dashboard')
 
 # Edit
-@app.route('/hospital/edit/<int:id>', methods=['POST'] )
-def hospital_edit(id):
-    Hospital.update_hospital(request.form)
+@app.route('/hospital/edit/<int:id>')
+def hospital_edit_template(id):
     data={'id':id}
     Hospital.get_hospital_by_id(data)
-    return redirect('/admin/dashboard',hos=Hospital.get_hospital_by_id(data))
+    return render_template('hospital_edit.html',hos=Hospital.get_hospital_by_id(data))
+
+@app.route('/hospital/edit', methods=['POST'] )
+def hospital_edit():
+
+    Hospital.update_hospital(request.form)
+    print('*'*20,Hospital.update_hospital(request.form))
+    return redirect('/admin/dashboard')
 
 # Delete
 @app.route('/hospital/delete/<int:id>')
 def hospital_delete(id):
     data={'id':id}
-    print('*'*20,data)
 
     Hospital.destroy_hospital(data)
     redirect('/admin/dashboard')
