@@ -9,8 +9,8 @@ def car():
     return render_template('admin_dashboard.html',cards=cards)
 
 
-@app.route('card',methods=['POST'])
-def doctor():
+@app.route('/card',methods=['POST'])
+def card_create():
     Card.create_card(request.form)
     print('*'*20,Card.create_card(request.form))
     return redirect('/admin/dashboard')
@@ -19,7 +19,7 @@ def doctor():
 @app.route('/card/edit', methods=['POST'] )
 def card_edit():
     Card.update(request.form)
-    print('*'*20,Doctor.update(request.form))
+    print('*'*20,Card.update(request.form))
     return redirect('/admin/dashboard')
 
 

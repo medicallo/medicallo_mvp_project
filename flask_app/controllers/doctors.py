@@ -9,7 +9,7 @@ def doc():
     return render_template('admin_dashboard.html',doctors=doctors)
 
 
-@app.route('doctor',methods=['POST'])
+@app.route('/doctor',methods=['POST'])
 def doctor():
     Doctor.create_doctor(request.form)
     print('*'*20,Doctor.create_doctor(request.form))
