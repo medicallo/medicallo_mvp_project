@@ -13,14 +13,14 @@
     <div class="container w-50 my-5">
         <form class="formContainer bg-dark text-white p-3" action="/doctor/edit" method="post">
             <div class="mb-3">
-                <input type="hidden" name="hospital_id" value="{{doctorandom.hospital_id}}">
-                <input type="hidden" name="id" value="{{doctorandom.id}}">
+                <input type="hidden" name="hospital_id" value="{{zzzz.hospital_id}}">
+                <input type="hidden" name="id" value="{{zzzz.id}}">
                 <label for="first_name" class="form-label"> First Name:</label>
-                <input type="text" class="form-control" id="Name" name="first_name" value="{{doctorandom.first_name}}">
+                <input type="text" class="form-control" id="Name" name="first_name" value="{{zzzz.first_name}}">
             </div>
             <div class="mb-3">
                 <label for="last_name" class="form-label"> Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" value="{{doctorandom.last_name}}">
+                <input type="text" class="form-control" id="last_name" name="last_name" value="{{zzzz.last_name}}">
             </div>
             <label for="Name" class="form-label">Photo:</label>
             <div class="input-group mb-3">
@@ -29,11 +29,11 @@
             </div>
             <div class="mb-3">
                 <label for="speciality"class="form-label"> Speciality:</label>
-                <input type="text" class="form-control" id="speciality" name="speciality"  value="{{doctorandom.speciality}}">
+                <input type="text" class="form-control" id="speciality" name="speciality"  value="{{zzzz.speciality}}">
             </div>
             <div class="mb-3">
                 <label for="about"class="form-label"> About Me:</label>
-                <input type="text" class="form-control" id="about" name="about"  value="{{doctorandom.about}}">
+                <input type="text" class="form-control" id="about" name="about"  value="{{zzzz.about}}">
             </div>
             <button type="submit" class="btn btn-success">Update</button>
             <a href="/admin/dashboard"><input type="button" class="btn btn-primary" value="Cancel"></a>

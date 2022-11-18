@@ -32,8 +32,9 @@ def doctor_delete(id):
 def doctor_edit_template(id):
     data={'id':id}
     print('*'*50,data)
-
-    return render_template('doctor_edit.html',doctorandom=Doctor.get_doctor_by_id(data))
+    doctor_one=Doctor.get_doctor_by_id(data)
+    print('*'*50,doctor_one)
+    return render_template('doctor_edit.html',zzzz=doctor_one)
 
 
 @app.route('/doctor/edit', methods=['POST'] )
