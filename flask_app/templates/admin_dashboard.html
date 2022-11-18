@@ -133,18 +133,16 @@
         <thead class="table-dark">
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Photo</th>
             <th>Speciality</th>
             <th>Actions</th>
             <th>Delete</th>
         </thead>
         <tbody>
             
-            {% for doctor in session['hospital_id'] %}
+            {% for doctor in doctors %}
             <tr>
                 <td>{{doctor.first_name}}</td>
                 <td>{{doctor.last_name}}</td>
-                <td>{{doctor.photo}}</td>
                 <td>{{doctor.speciality}}</td>
                 
                 <td><a href="/doctor/edit/{{doctor.id}}"><button type="button" class="btn btn-success">Edit</button></a></td>
@@ -187,8 +185,8 @@
                 <label for="about" class="form-label">About</label>
                 <input type="text" class="form-control" id="about" name="about">
             </div>
-            <button type="submit" class="btn btn-primary add" onclick="closeForm()">ADD</button>
-            <input type="button" class="btn btn-primary mt-2" onclick="closeForm()" value="Cancel">
+            <button type="submit" class="btn btn-primary add" onclick="closeForm1()">ADD</button>
+            <input type="button" class="btn btn-primary mt-2" onclick="closeForm1()" value="Cancel">
         
         </form>
 
@@ -197,42 +195,25 @@
 </div>
 
 <!-- Cards -->
-<div id="card" class="container mt-5" style="height: 100vh; margin-right: 10rem;">
-    <div class="card-group">
-    <div class="card">
-        <img src="/flask_app/static/images/head ache.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">Head ache</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">legs ache</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="/flask_app/static/images/back ache.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">back ache</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    </div>
-    <div class="openBtn">
+<div id="card" class="container  mt-5" style="height: 100vh; margin-right: 10rem;">
+    <div class="openBtn d-flex justify-content-end">
         <button class="openButton my-5 btn btn-success" onclick="openForm2()">Add New Card</button>
     </div>
+    <div class="card-group">
+    {% for card in cards %}
+    <div class="card">
+        <img class="card-img-top" style="height: 150px;" src="{{ url_for('static', filename='images/' + card.photo) }}" alt="photo of the hospital">
+        <div class="card-body">
+        <h5 class="card-title">{{card.name}}</h5>
+        </div>
+        <div class="card-footer">
+
+            <a href="/card/edit/{{card.id}}"><button type="button" class="btn btn-success">Edit</button></a>
+            <a href="/card/delete/{{card.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 </div>
 <!-- CARD POP-UP -->
 <div class="loginPopup">
@@ -269,6 +250,17 @@
             <option value="3">Three</option>
         </select>
     </div>
+    <form action="/card" method="post">
+        <div class="d-flex align-items-center gap-5 mb-5">
+            <label for="select"><strong>Card:</strong></label>
+            <select id="hospital" name="hospital_id">
+                {% for hospital in hospitals %}
+                <option value={{hospital.id}}>{{hospital.name}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Select" class="btn btn-primary">
+        </div>
+    </form>
     <table class="table text-center">
         <thead class="table-dark">
         <th>Card</th>

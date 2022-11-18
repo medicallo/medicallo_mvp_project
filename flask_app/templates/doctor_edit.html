@@ -11,6 +11,10 @@
 </head>
 <body class="bg-secondary bg-opacity-20">
     <div class="container w-50 my-5">
+        <div class="text-center">
+            <img style="width:600px; height: 350px;" class="rounded my-3" src="{{ url_for('static', filename='images/' + zzzz.photo) }}" alt="photo of the hospital">
+
+        </div>
         <form class="formContainer bg-dark text-white p-3" action="/doctor/edit" method="post">
             <div class="mb-3">
                 <input type="hidden" name="hospital_id" value="{{zzzz.hospital_id}}">
@@ -25,6 +29,8 @@
             <label for="Name" class="form-label">Photo:</label>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="inputGroupFile02" name="photo">
+                <input type="hidden" value="{{zzzz.photo}}" name="old_photo">
+
                 <label class="input-group-text" for="inputGroupFile02" >Upload</label>
             </div>
             <div class="mb-3">

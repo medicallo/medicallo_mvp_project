@@ -26,12 +26,13 @@ class Card:
 
 # Read
     @classmethod
-    def get_all(cls):
+    def get_all_card(cls):
         query="SELECT * FROM cards;"
         results=connectToMySQL(cls.db_name).query_db(query)
         cards=[]
         for row in results:
             cards.append(cls(row))
+        print('*'*20,cards)
         return cards
 
 

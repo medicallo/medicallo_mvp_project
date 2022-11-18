@@ -7,16 +7,11 @@ def get_doctors():
     session['hospital_id']=Doctor.get_doctor_by_hospital_id(request.form)
     return redirect('/admin/dashboard')
 
-@app.route('/admin/dashboard')
-def get_doc(): 
-    print('*'*20,session['hospital_id'])
 
-    return render_template('admin_dashboard.html', all_doctors=session['hospital_id'])
-
-# @app.route('/doctor',methods=['POST'])
-# def doctor():
-    
-#     return redirect('/admin/dashboard')
+@app.route('/doctor',methods=['POST'])
+def doctor_create():
+    Doctor.create_doctor(request.form)
+    return redirect('/admin/dashboard')
 
 
 
@@ -39,8 +34,18 @@ def doctor_edit_template(id):
 
 @app.route('/doctor/edit', methods=['POST'] )
 def doctor_edit():
-    Doctor.update_doctor(request.form)
-    print('*'*20,Doctor.update_doctor(request.form))
+    if request.form['photo']:
+        Doctor.update_doctor(request.form)
+    else :
+        form = {
+            'first_name': request.form['first_name'],
+            'last_name':request.form['last_name'],
+            'photo':request.form['old_photo'],
+            'speciality':request.form['speciality'],
+            'about':request.form['about'],
+        }
+        Doctor.update_doctor(form)
+    
     return redirect('/admin/dashboard')
 
 
