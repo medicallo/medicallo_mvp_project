@@ -18,7 +18,7 @@ class Disease:
 
 # CREAT
     @classmethod
-    def create_user(cls,data):
+    def create_disease(cls,data):
         query = "INSERT INTO diseases (name,comment,doctor_id,category_id) VALUES (%(name)s,%(comment)s,%(doctor_id)s, %(category_id)s);"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
@@ -26,7 +26,7 @@ class Disease:
 
 # Read
     @classmethod
-    def get_all(cls):
+    def get_all_diseases(cls):
         query="SELECT * FROM diseases;"
         results=connectToMySQL(cls.db_name).query_db(query)
         diseases=[]
@@ -36,19 +36,19 @@ class Disease:
 
         
     @classmethod
-    def get_one_by_id(cls,data):
-        query="SELECT * FROM diseases WHERE id = %(id)s ;"
+    def get_disease_by_id(cls,data):
+        query="SELECT * FROM diseases WHERE category_id = %(category_id)s AND doctor_id = %(doctor_id)s  ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
         return cls(result[0])
 
 # UPDATE
     @classmethod
-    def update(cls, data):
+    def update_disease(cls, data):
         query = "UPDATE diseases SET name=%(name)s, comment=%(comment)s, doctor_id=%(doctor_id)s, category_id=%(category_id)s WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
     
 # DELETE
     @classmethod
-    def destroy(cls,data):
+    def destroy_disease(cls,data):
         query = "DELETE FROM diseases WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)

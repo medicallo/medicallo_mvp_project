@@ -51,11 +51,5 @@ function closeForm4() {
     document.querySelector("#popupForm4").style.display = "none";
 
 }
-function openEdit() {
-    document.querySelector("#popupEdit").style.display = "block";
-}
-function closeEdit() {
-    document.querySelector("#popupEdit").style.display = "none";
 
-}
 
