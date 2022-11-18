@@ -33,10 +33,17 @@ class Category:
 
         
     @classmethod
+    def get_category_by_card_id(cls,data):
+        query="SELECT * FROM categories WHERE card_id = %(card_id)s ;"
+        result = connectToMySQL(cls.db_name).query_db(query,data)
+        print('*'*50,'hello',result)
+        return result
+
+    @classmethod
     def get_category_by_id(cls,data):
         query="SELECT * FROM categories WHERE id = %(id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
-        return cls(result[0])
+        return result[0]
 
 # UPDATE
     @classmethod

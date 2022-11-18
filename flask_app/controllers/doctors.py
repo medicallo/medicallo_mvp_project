@@ -1,11 +1,17 @@
 from flask import Flask, redirect, render_template, request,session
 from flask_app import app
 from flask_app.models.doctor import Doctor
+from flask_app.models.hospital import Hospital
+
 
 @app.route('/doctor_table',methods=['POST'])
 def get_doctors():
+    data ={
+        "id":request.form["hospital_id"]
+    }
+    session['hospital_name']=Hospital.get_hospital_by_id(data).name
     session['hospital_id']=Doctor.get_doctor_by_hospital_id(request.form)
-    return redirect('/admin/dashboard')
+    return redirect('/admin/dashboard#doctor')
 
 
 @app.route('/doctor',methods=['POST'])

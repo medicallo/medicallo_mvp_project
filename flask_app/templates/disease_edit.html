@@ -13,12 +13,13 @@
     <div class="container w-50 my-5">
         <form class="formContainer bg-dark text-white p-3" action="/disease/edit" method="post">
             <div class="mb-3">
+                <input type="hidden" name="id" value="{{diseases.id}}">
                 <label for="Name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="Name" name="name" >
+                <input type="text" class="form-control" id="Name" name="name" value="{{diseases.name}}">
             </div>
             <div class="mb-3">
                 <label for="comment" class="form-label">Comment:</label>
-                <input type="text" class="form-control" id="Name" name="comment" >
+                <input type="text" class="form-control" id="Name" name="comment" value="{{diseases.comment}}">
             </div>
 
         <button type="submit" class="btn btn-success add" onclick="closeForm2()">Update</button>

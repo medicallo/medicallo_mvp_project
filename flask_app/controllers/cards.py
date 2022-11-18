@@ -8,11 +8,6 @@ def card_create():
     Card.create_card(request.form)
     return redirect('/admin/dashboard')
 
-@app.route('/admin/dashboard')
-def card_read():
-    card=Card.get_all_card()
-    print('*'*20)
-    return render_template('admin_dashboard.html',cards=session['cards'])
 
 
 @app.route('/card/edit', methods=['POST'] )
