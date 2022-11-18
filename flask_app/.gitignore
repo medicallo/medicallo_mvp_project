@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-flask_app\controllers\__pycache__
-flask_app\models\__pycache__
+controllers\__pycache__
+models\__pycache__
 *.py[cod]
 *$py.class
 # C extensions
