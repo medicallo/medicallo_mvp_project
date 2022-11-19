@@ -20,47 +20,54 @@
         </nav>
     <div class="container backgroud-color theall">
         <div class="seperator">
-            <div><div class="form">
-                <form action="/diagnostic" method="post">
-                    <div><label for="region">region</label>
-                        <select name="region" id="cars">
+            <div class="decor">
+            
+                    <form class="form text-white" action="/diagnostic" method="post">
+                        <div><label class="big" for="region">region</label>
+                            <select class="big" name="region" id="cars">
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="big" for="body_part">body part</label>
+                        <select class="big" name="body_part" id="cars">
                             <option value=""></option>
                             <option value=""></option>
                             <option value=""></option>
                             <option value=""></option>
                         </select>
+                        </div>
+    
+                        <div>
+                            <label class="big" for="symptoms">symptoms</label>
+                        <select class="big" name="symptoms" id="cars">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                        </div>
+                        
+                        <div>
+                            <label class="big" for="symptoms">Diagnostic</label>
+                            <input class="big" type="submit" value="let's check">
+                        </div>
+                        
+                        
+    
+                    </form>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Comments</label>
                     </div>
-                    <div>
-                        <label for="body_part">body part</label>
-                    <select name="body_part" id="cars">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                    </div>
-
-                    <div>
-                        <label for="symptoms">symptoms</label>
-                    <select name="symptoms" id="cars">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                    </div>
-                    
-                    <div>
-                        <input type="submit" value="let's check">
-                    </div>
-                    
-                    </div>
-            
-
-                </form>
-
-
+    
+    
+                
             </div>
+            
             <div class="slide">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
