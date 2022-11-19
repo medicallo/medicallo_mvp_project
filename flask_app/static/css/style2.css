@@ -3,10 +3,22 @@
     justify-content: space-between;
 }
 .form{
+    height:400px;
+    width: 400px;
     
 
 }
+.big{
+    height: 40px;
+    width: 120px;
+}
+
 .logo{
     height:60px;
 
+}
+.decor{
+    background-color: rgb(66, 173, 215);
+    height: 470px;
+    width: 500px;
 }

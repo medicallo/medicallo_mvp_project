@@ -7,30 +7,34 @@ from flask_app.models.user import User
 
 @app.route('/registration')
 def index():
-    return render_template('register.html')
+    return render_template('signup.html')
 
 
-@app.route('/login-user')
+@app.route('/login')
 def indexr():
-    return render_template('lo.html')
+    return render_template('login.html')
 
 
 
 
 
-@app.route('/register',methods=['POST'])
+@app.route('/signup',methods=['POST'])
 def register():
-    if not User.validate_register(request.form):
+    if User.validate_register(request.form)==False:
         return redirect('/')
-    data ={ 
-        "first_name": request.form['first_name'],
-        "last_name": request.form['last_name'],
-        "email": request.form['email'],
-        "password": bcrypt.generate_password_hash(request.form['password'])
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    print(pw_hash)
+    data={
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email'],
+        'password': pw_hash,
+
     }
-    id = User.create_user(data)
-    session['user_id'] = id
-    return redirect('/lo')
+    return_from_db=User.create_user(data)
+    print("-"*20, return_from_db,"-"*20)
+    session['user_id']=return_from_db
+    return redirect('/login')
 
 @app.route('/login',methods=['POST'])
 def login():
