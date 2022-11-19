@@ -1,0 +1,12 @@
+from flask import Flask, redirect, render_template, session, request,flash
+from flask_app import app
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt(app)
+from flask_app.models.doctor import Doctor
+from flask_app.models.hospital import Hospital
+from flask_app.models.disease import Disease
+
+
+app.route('/diagnostic')
+def render_page():
+    return render_template('description.html')

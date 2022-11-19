@@ -21,11 +21,21 @@
       
                       <div class="text-center">
                         <img class="logo" src="../static/images/logo.jpg" alt=""  style="width: 185px;" alt="logo">
-                         
+                        
                         <h4 class="mt-1 mb-5 pb-1">We are Medicallo</h4>
                       </div>
       
-                      <form>
+                      <form action="/login" method="post">
+                        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                <strong>Flash AHHHHHHH!!!!</strong>
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
                         <p>Please login to your account</p>
       
                         <div class="form-outline mb-4">
@@ -47,7 +57,7 @@
       
                         <div class="d-flex align-items-center justify-content-center pb-4">
                           <p class="mb-0 me-2">Don't have an account?</p>
-                          <button type="button" class="btn btn-outline-danger">Create new</button>
+                          <a href="/"><button type="button" class="btn btn-outline-danger">Create new</button></a>
                         </div>
       
                       </form>
