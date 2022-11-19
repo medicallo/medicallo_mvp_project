@@ -53,3 +53,9 @@ class Hospital:
     def destroy_hospital(cls,data):
         query = "DELETE FROM hospitals WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
+
+# JOIN 3 Tables
+    @classmethod
+    def get_hospital_with_doc_disease(cls,data):
+        query= "SELECT * FROM hospitals join doctors on doctors.hospital_id=hospitals.id join diseases on diseases.doctor_id=doctors.id where hospitals.id=%(id)s and diseases.category_id=%(category_id)s;"
+        return connectToMySQL(cls.db_name).query_db(query,data)
