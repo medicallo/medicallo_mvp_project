@@ -21,7 +21,7 @@
         <div class="container w-50 d-flex flex-wrap justify-content-between my-5 gap-5">
           {% for card in cards %}
             <div class="category">
-                <a class="btn  tr"  href="/home/diagnostic/{{card.id}}" style="background-image:url({{url_for('static', filename='images/'+ card.photo)}});background-size:cover;background-repeat:no-repeat"><h1 class="titre"> {{card.name}}</h1></a>
+                <a class="btn  tr"  href="/diagnostic/{{card.id}}" style="background-image:url({{url_for('static', filename='images/'+ card.photo)}});background-size:cover;background-repeat:no-repeat"><h1 class="titre"> {{card.name}}</h1></a>
             </div>
             {% endfor %}
 

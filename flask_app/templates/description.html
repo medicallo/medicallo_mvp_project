@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="..\static\css\style2.css">
+    <title>Document</title>
+
 
 </head>
 <body >
@@ -22,36 +24,55 @@
         <div class="seperator">
             <div class="decor">
             
-                    <form class="form text-white" action="/diagnostic" method="post">
-                        <div><label class="big" for="region">region</label>
-                            <select class="big form-select" aria-label="Default select example" name="region" id="cars">
-                                <option value=""></option>
+                    <form class="form text-white" action="/region_body" method="post">
+                        <div>
+                            <label class="big" for="region">region</label>
+
+                            <select class="big form-select" aria-label="Default select example" name="hos_id" id="cars">
+                            {% for hospital in hospitals %}
+                            <option value="{{hospital.id}}">{{hospital.location}}</option>
+                            {% endfor %}
                         
                             </select>
                         </div>
                         <div>
                             <label class="big" for="body_part">body part</label>
-                        <select class="big form-select" aria-label="Default select example" id="cars" name="body_part">
-                            <option value=""></option>
-            
+                        <select class="big form-select" aria-label="Default select example" id="cars" name="cat_id">
+                            {% for category in categories %}
+                            <option value="{{category.id}}">{{category.name}}</option>
+                            {% endfor %}
+
                         </select>
+
                         </div>
-    
                         <div>
-                            <label class="big" for="symptoms">symptoms</label>
-                        <select class="big form-select" aria-label="Default select example"  name="symptoms" id="cars">
-                            <option value=""></option>
-                            
-                        </select>
+                            <button onclick="symptoms()">open</button>
+                            <input onclick="symptoms()" class="big btn btn-success" type="submit" value="Submit">
                         </div>
-                        
-                        <div>
-                            <input class="big btn btn-success" type="submit" value="let's check">
-                        </div>
-                        
-                        
-    
                     </form>
+                    <div id="symptoms">
+                        <form action="" method="post">
+                            <div>
+                                <label class="big" for="symptoms">symptoms</label>
+                            <select class="big form-select" aria-label="Default select example"  name="symptoms" id="cars">
+                                
+                                {% for disease in session['diseases'] %}
+                                <option value="{{disease.id}}">{{disease.first_name}}</option>
+                                {% endfor %}
+                                
+                            </select>
+                            </div>
+                            <div>
+                                <input class="big btn btn-success" type="submit" value="let's check">
+                            </div>
+                        </form>
+
+                    </div>
+                        
+                        
+                        
+    
+                    
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 72px"></textarea>
                         <label for="floatingTextarea2">Comments</label>
@@ -77,16 +98,12 @@
                 </div>
                 
             </div>
-
-
-
-
         </div>
 
 
 
 </div>
 
-    
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
 </body>
 </html>

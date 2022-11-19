@@ -52,6 +52,10 @@ function closeForm4() {
 
 }
 
+// function symptoms() {
+//     document.querySelector("#symptoms").style.display = "inline-block";
+// }
+
 // function myFunction() {
 //     var x = document.querySelector("#category_id").value;
 //     document.getElementById("demo").innerHTML = "You selected: " + x;
