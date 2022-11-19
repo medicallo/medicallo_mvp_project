@@ -5,7 +5,7 @@ bcrypt = Bcrypt(app)
 from flask_app.models.user import User
 
 
-@app.route('/registration')
+@app.route('/')
 def index():
     return render_template('signup.html')
 
