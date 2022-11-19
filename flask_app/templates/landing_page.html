@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="home1.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home1.css') }}">
+
 
 </head>
 <body class="bg-secondary bg-opacity-20">
@@ -19,13 +20,13 @@
         </nav>
         <div class="block1">
             <div class="category1">
-                <a class="btn btn-primary"  href="">head sickness</a>
+                <a class="btn btn-primary"  href="/login-user">head sickness</a>
             
 
 
             </div>
             <div class="category2">
-                <a class="btn btn-primary"  href="">back and abdominal sickness</a>
+                <a class="btn btn-primary"  href="/login-user">back and abdominal sickness</a>
     
 
 
@@ -34,10 +35,10 @@
         </div>
         <div class="block2">
             <div class="category3">
-            <a class="btn btn-primary"  href="">skin sckness</a>
+            <a class="btn btn-primary"  href="/login-user">skin sckness</a>
             </div>
             <div class="category4">
-                <a class="btn btn-primary"  href="">legs and knees sickness</a>
+                <a class="btn btn-primary"  href="/login-user">legs and knees sickness</a>
                 
 
             </div>

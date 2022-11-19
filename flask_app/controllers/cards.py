@@ -6,7 +6,7 @@ from flask_app.models.card import Card
 @app.route('/card',methods=['POST'])
 def card_create():
     Card.create_card(request.form)
-    return redirect('/admin/dashboard')
+    return redirect('/admin/dashboard#card')
 
 
 
@@ -20,7 +20,7 @@ def card_edit():
             'photo':request.form['old_photo'],
         }
         Card.update_card(form)
-    return redirect('/admin/dashboard')
+    return redirect('/admin/dashboard#card')
 
 
 # Delete
@@ -28,7 +28,8 @@ def card_edit():
 def card_delete(id):
     data={'id':id}
     Card.destroy_card(data)
-    return redirect('/admin/dashboard')
+    print('*'*50,Card.destroy_card(data))
+    return redirect('/admin/dashboard#card')
 
 # Edit
 @app.route('/card/edit/<int:id>')
