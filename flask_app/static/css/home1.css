@@ -1,13 +1,10 @@
-body{
-    background-color: #00B8D3;
-}
 
-.category1{
+
+.category {
 height: 230px;
 width: 230px;
-background-image: url("../images/headache.jpg");
-background-size: cover;
-background-repeat: no-repeat;
+border: black solid 1px;
+border-radius: 10px;
 
 
 }
@@ -16,8 +13,7 @@ height: 230px;
 width: 230px;
 background-color: rgb(255, 255, 255);
 background-image: url("../images/backache.jpg");
-background-size: cover;
-background-repeat: no-repeat;
+
 
 }
 .block1{
@@ -115,15 +111,16 @@ background-repeat: no-repeat;
 height: 230px;
 width: 230px;
 background-color: black;
-opacity: 30%;
+border-radius: 10px;
 
 }
 .titre{
-    color: #ffffff;
+    color: #393232;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    font-size: 20px;
 }
-.ci{
-    
-}
+
 .hoss{
     height: 350px;
     
