@@ -9,14 +9,17 @@ from flask_app.models.user import User
 def index():
     return render_template('register.html')
 
+
 @app.route('/lo')
 def indexr():
     return render_template('lo.html')
 
 
+
+
+
 @app.route('/register',methods=['POST'])
 def register():
-
     if not User.validate_register(request.form):
         return redirect('/')
     data ={ 
@@ -27,7 +30,6 @@ def register():
     }
     id = User.create_user(data)
     session['user_id'] = id
-
     return redirect('/lo')
 
 @app.route('/login',methods=['POST'])
@@ -35,12 +37,13 @@ def login():
     user = User.get_one_by_email(request.form)
     if not user:
         flash("Invalid Email","login")
-        return redirect('/')
+        return redirect('/lo')
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash("Invalid Password","login")
-        return redirect('/')
+        return redirect('/lo')
     session['user_id'] = user.id
     return redirect('/dashboard')
+
 
 @app.route('/dashboard')
 def dashboard():
@@ -49,7 +52,7 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-    return render_template("dash.html",user=User.get_by_id(data))
+    return render_template("dash.html",user=User.get_one_by_id(data))
 
 @app.route('/logout')
 def logout():
