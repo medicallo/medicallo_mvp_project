@@ -7,35 +7,48 @@ bcrypt = Bcrypt(app)
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 class Admin:
-    db_name ="black"
+    db_name ="doc"
     def __init__(self,data):
         self.id=data['id']
         self.email=data['email']
         self.password=data['password']
         self.created_at=data['created_at']
         self.updated_at=data['updated_at']
+    
+    @classmethod
+    def create_admin(cls,data):
+        query = "INSERT INTO admin (email,password) VALUES (%(email)s, %(password)s);"
+        return connectToMySQL(cls.db_name).query_db(query, data)
+    
+    
+    
+    @classmethod
+    def get_one_by_id(cls,data):
+        query="SELECT * FROM admin WHERE id = %(id)s ;"
+        result = connectToMySQL(cls.db_name).query_db(query,data)
+        return cls(result[0])
+
+
+    @classmethod
+    def get_one_by_email(cls,data):
+        query="SELECT * FROM admin WHERE email = %(email)s ;"
+        result = connectToMySQL(cls.db_name).query_db(query,data)
+        if len(result)<1:
+            return False
+        return cls(result[0])
 
     @staticmethod
-    def validate_user(data):
+    def validate_admin(data):
         is_valid = True # we assume this is true.
-        query="SELECT * FROM users WHERE email = %(email)s ;"
-        result = connectToMySQL(User.db_name).query_db(query,data)
+        query="SELECT * FROM admin WHERE email = %(email)s ;"
+        result = connectToMySQL(Admin.db_name).query_db(query,data)
         if len(result)>=1:
             flash("Email Already Exist", 'email')
         if not EMAIL_REGEX.match(data['email']): 
             flash("Incorrect Email", 'email')
             is_valid = False
-        if len(data['first_name']) < 2:
-            flash("first Name must be at least 2 characters.",'email' )
-            is_valid = False
-        if len(data['last_name']) < 2:
-            flash("last name must be at least 2 characters.", 'email')
-            is_valid = False
         if len(data['password']) < 3:
             flash("password must be at least 8 characters.", 'email')
-            is_valid = False
-        if data['password']!=data ['confirm_password'] :
-            flash("password Don't match.", 'email')
             is_valid = False
         return is_valid
 

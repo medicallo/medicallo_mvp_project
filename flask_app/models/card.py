@@ -1,10 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 from flask import flash
-# import re
-# from flask_bcrypt import Bcrypt
-# bcrypt = Bcrypt(app) 
-# EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 class Card:
     db_name ="doc"
@@ -26,20 +22,27 @@ class Card:
 
 # Read
     @classmethod
-    def get_all(cls):
+    def get_all_card(cls):
         query="SELECT * FROM cards;"
         results=connectToMySQL(cls.db_name).query_db(query)
         cards=[]
         for row in results:
             cards.append(cls(row))
+        print('*'*20,cards)
         return cards
 
+
+    @classmethod
+    def get_card_by_card_id(cls,data):
+        query="SELECT * FROM cards WHERE card_id = %(card_id)s ;"
+        result = connectToMySQL(cls.db_name).query_db(query,data)
+        return result
 
     @classmethod
     def get_card_by_id(cls,data):
         query="SELECT * FROM cards WHERE id = %(id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
-        return cls(result[0])
+        return result[0]
 
 
 # UPDATE

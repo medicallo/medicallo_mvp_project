@@ -1,13 +1,18 @@
 from flask import Flask, redirect, render_template, request
 from flask_app import app
 from flask_app.models.hospital import Hospital
+from flask_app.models.doctor import Doctor
+from flask_app.models.card import Card
+from flask_app.models.category import Category
 
 # Dashboard
 @app.route('/admin/dashboard')
 def admin():
     hospitals=Hospital.get_all_hospital()
-    
-    return render_template('admin_dashboard.html',hospitals=hospitals)
+    doctors=Doctor.get_all()
+    cards=Card.get_all_card()
+    categories=Category.get_all_categories()
+    return render_template('admin_dashboard.html',hospitals=hospitals,doctors=doctors,cards=cards,categories=categories)
 
 # Create
 @app.route('/hospital', methods=['POST'] )

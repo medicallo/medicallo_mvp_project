@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Card</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 
 </head>
 <body class="bg-secondary bg-opacity-20">
     <div class="container w-50 my-5">
+        <div class="text-center">
+            <img style="width:600px; height: 350px;" class="rounded my-3" src="{{ url_for('static', filename='images/' + car.photo) }}" alt="photo of the hospital">
+
+        </div>
         <form class="formContainer bg-dark text-white p-3" action="/card/edit" method="post">
             <div class="mb-3">
+                <input type="hidden" name="id" value="{{car.id}}">
+
                 <label for="Name" class="form-label">Name:</label>
                 <input type="text" class="form-control" id="Name" name="name" >
             </div>
             <label for="Name" class="form-label">Photo:</label>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="inputGroupFile02" name="photo">
+                <input type="hidden" value="{{car.photo}}" name="old_photo">
+
                 <label class="input-group-text" for="inputGroupFile02" >Upload</label>
             </div>
         <button type="submit" class="btn btn-success add" onclick="closeForm2()">Update</button>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Document</title>
+</head>
+<body>
+  <div class="container">
+      <form action="/login_admin" method="post" autocomplete="on">
+        
+
+        {% with messages = get_flashed_messages(category_filter=['login']) %}
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                <strong>Flash AHHHHHHH!!!!</strong>
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+
+
+        <div class="box">
+          <label for="email" class="fl fontLabel"> Email : </label>
+		        <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                <div class="fr">
+    					<input type="email" required name="email" placeholder="Email " class="textBox">
+    			</div>
+				<div class="clr"></div>
+    	</div>
+    		<!--Email ID----->
+
+
+            <!---Password------>
+    		<div class="box">
+          <label for="password" class="fl fontLabel"> Password :</label>
+    			<div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="Password" required name="password" placeholder="Password" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Password---->
+
+    		<!---Gender----->
+    		
+
+    		
+
+
+
+    		<!---Submit Button------>
+    		<div class="box" style="background: #2d3e3f">
+    				<input type="Submit" name="Submit" class="submit" value="SUBMIT">
+    		</div>
+    		<!---Submit Button----->
+       
+      <!---Submit Button----->
+      </form>
+      
+      
+      
+      
+        
+    </div>
+  </div>
+  <!--Body of Form ends--->
+
+
+
+</body>
+</html>

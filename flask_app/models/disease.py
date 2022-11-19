@@ -36,10 +36,16 @@ class Disease:
 
         
     @classmethod
-    def get_disease_by_id(cls,data):
-        query="SELECT * FROM diseases WHERE category_id = %(category_id)s AND doctor_id = %(doctor_id)s  ;"
+    def get_disease_by_ids(cls,data):
+        query="SELECT * FROM diseases WHERE doctor_id = %(doctor_id)s  AND category_id = %(category_id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
-        return cls(result[0])
+        return result
+
+    @classmethod
+    def get_disease(cls,data):
+        query="SELECT * FROM diseases WHERE id = %(id)s ;"
+        result = connectToMySQL(cls.db_name).query_db(query,data)
+        return result[0]
 
 # UPDATE
     @classmethod

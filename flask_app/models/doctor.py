@@ -2,11 +2,6 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app
 
 
-from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app import app
-
-
-
 class Doctor:
     db_name ="doc"
     def __init__(self,data):
@@ -54,12 +49,13 @@ class Doctor:
         query="SELECT * FROM doctors WHERE id = %(id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
         print('*'*20,result[0])
-        return result
+        return result[0]
 
 # UPDATE
     @classmethod
     def update_doctor(cls, data):
         query = "UPDATE doctors SET first_name=%(first_name)s, last_name=%(last_name)s, photo=%(photo)s, speciality=%(speciality)s, about=%(about)s, hospital_id=%(hospital_id)s WHERE id = %(id)s;"
+        print('*'*20,query)
         return connectToMySQL(cls.db_name).query_db(query,data)
     
 # DELETE
