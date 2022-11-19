@@ -11,6 +11,8 @@
 .big{
     height: 40px;
     width: 120px;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
 .logo{
@@ -18,7 +20,7 @@
 
 }
 .decor{
-    background-color: rgb(66, 173, 215);
+    background: linear-gradient(to right, #2b97f6, #629e90, #3c97a9, #09f1cf);
     height: 470px;
     width: 500px;
 }
