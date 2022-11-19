@@ -24,7 +24,7 @@
             
                     <form class="form text-white" action="/diagnostic" method="post">
                         <div><label class="big" for="region">region</label>
-                            <select class="big" name="region" id="cars">
+                            <select class="big form-select" aria-label="Default select example" name="region" id="cars">
                                 <option value=""></option>
                                 <option value=""></option>
                                 <option value=""></option>
@@ -33,7 +33,7 @@
                         </div>
                         <div>
                             <label class="big" for="body_part">body part</label>
-                        <select class="big" name="body_part" id="cars">
+                        <select class="big form-select" aria-label="Default select example" id="cars" name="body_part">
                             <option value=""></option>
                             <option value=""></option>
                             <option value=""></option>
@@ -43,7 +43,7 @@
     
                         <div>
                             <label class="big" for="symptoms">symptoms</label>
-                        <select class="big" name="symptoms" id="cars">
+                        <select class="big form-select" aria-label="Default select example"  name="symptoms" id="cars">
                             <option value=""></option>
                             <option value=""></option>
                             <option value=""></option>
@@ -52,15 +52,14 @@
                         </div>
                         
                         <div>
-                            <label class="big" for="symptoms">Diagnostic</label>
-                            <input class="big" type="submit" value="let's check">
+                            <input class="big btn btn-success" type="submit" value="let's check">
                         </div>
                         
                         
     
                     </form>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 72px"></textarea>
                         <label for="floatingTextarea2">Comments</label>
                     </div>
     
