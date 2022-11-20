@@ -7,8 +7,12 @@ from flask_app.models.disease import Disease
 from flask_app.models.doctor import Doctor
 
 @app.route('/home')
-def home():
+def dashboard():
+    if 'user_id' not in session:
+        return redirect('/logout')
     return render_template('home_landing.html',cards=Card.get_all_card())
+
+
 
 @app.route('/diagnostic/<int:id>')
 def diagnostic(id):

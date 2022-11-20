@@ -3,11 +3,13 @@ from flask_app import app
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 from flask_app.models.user import User
+from flask_app.models.card import Card
 
 
 @app.route('/')
 def index():
-    return render_template('signup.html')
+    cards=Card.get_all_card()
+    return render_template('landing_page.html',cards=cards)
 
 
 @app.route('/login')
@@ -26,7 +28,6 @@ def register():
         'last_name': request.form['last_name'],
         'email': request.form['email'],
         'password': pw_hash,
-
     }
     return_from_db=User.create_user(data)
     print("-"*20, return_from_db,"-"*20)
@@ -43,17 +44,9 @@ def login():
         flash("Invalid Password","login")
         return redirect('/lo')
     session['user_id'] = user.id
-    return redirect('/dashboard')
+    return redirect('/home')
 
 
-@app.route('/dashboard')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect('/logout')
-    data ={
-        'id': session['user_id']
-    }
-    return render_template("dash.html",user=User.get_one_by_id(data))
 
 @app.route('/logout')
 def logout():

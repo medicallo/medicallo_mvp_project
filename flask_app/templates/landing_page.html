@@ -10,7 +10,7 @@
 
 
 </head>
-<body class="bg-secondary bg-opacity-20">
+<body class="bg-secondary bg-opacity-10">
     <div class="container backgroud-color theall">
         <nav class="navbar navbar-light bg-light d-flex justify-content-between">
     
@@ -18,30 +18,16 @@
     <a class="btn btn-primary"  href="">Login</a>
     
         </nav>
-        <div class="block1">
-            <div class="category1">
-                <a class="btn btn-primary"  href="/login">head sickness</a>
-            
-
-
+        <div class="container w-50 d-flex flex-wrap justify-content-between my-5 gap-5">
+          {% for card in cards %}
+            <div class="category">
+                <a class="btn  tr"  href="/login" style="background-image:url({{url_for('static', filename='images/'+ card.photo)}});background-size:cover;background-repeat:no-repeat"><h1 class="titre"> {{card.name}}</h1></a>
             </div>
-            <div class="category2">
-                <a class="btn btn-primary"  href="/login">back and abdominal sickness</a>
-    
+            {% endfor %}
 
-
-            </div>
 
         </div>
-        <div class="block2">
-            <div class="category3">
-            <a class="btn btn-primary"  href="/login">skin sckness</a>
-            </div>
-            <div class="category4">
-                <a class="btn btn-primary"  href="/login">legs and knees sickness</a>
-                
-
-            </div>
+    
 
         </div>
         <div class="options">
@@ -83,7 +69,7 @@
                   </div>
                 </div>
               </div>
-           
+          
         </div>
         <div class="hos"> <div class="card-group hoss">
             <div class="card">
