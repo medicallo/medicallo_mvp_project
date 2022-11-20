@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 from flask_app.models.admin import Admin
 
-@app.route('/lo/admi')
+@app.route('/login/admin')
 def indef():
     return render_template('log_admin.html')
 
@@ -32,4 +32,4 @@ def dashboard_admin():
 @app.route('/logout')
 def logout_admin():
     session.clear()
-    return redirect('/admi')
+    return redirect('/login')
