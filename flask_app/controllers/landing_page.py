@@ -12,6 +12,8 @@ def home():
 
 @app.route('/diagnostic/<int:id>')
 def diagnostic(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
     session['card_id']=id
     data={'card_id':id}
     data_card={'id':id}
@@ -46,3 +48,4 @@ def show_doc(id):
     }
     doctor=Doctor.get_doctor_by_id(data)
     return render_template('doctor_show.html',doctor=doctor) 
+
