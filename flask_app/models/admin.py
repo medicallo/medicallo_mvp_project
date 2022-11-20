@@ -12,8 +12,7 @@ class Admin:
         self.id=data['id']
         self.email=data['email']
         self.password=data['password']
-        self.created_at=data['created_at']
-        self.updated_at=data['updated_at']
+
     
     @classmethod
     def create_admin(cls,data):
@@ -35,7 +34,7 @@ class Admin:
         result = connectToMySQL(cls.db_name).query_db(query,data)
         if len(result)<1:
             return False
-        return cls(result[0])
+        return result[0]
 
     @staticmethod
     def validate_admin(data):

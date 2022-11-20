@@ -16,6 +16,10 @@ def index():
 def indexr():
     return render_template('login.html')
 
+@app.route('/register')
+def registeration():
+    return render_template('signup.html')
+
 
 @app.route('/signup',methods=['POST'])
 def register():
@@ -39,10 +43,10 @@ def login():
     user = User.get_one_by_email(request.form)
     if not user:
         flash("Invalid Email","login")
-        return redirect('/lo')
+        return redirect('/login')
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash("Invalid Password","login")
-        return redirect('/lo')
+        return redirect('/login')
     session['user_id'] = user.id
     return redirect('/home')
 
