@@ -7,28 +7,28 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Diagnose</title>
 
 
 </head>
 <body >
     <div class="container backgroud-color theall">
-        <nav class="navbar navbar-light bg-light d-flex justify-content-between">
+        <nav class="navbar navbar-light bg-light d-flex justify-content-between align-items-center">
     
-    <a href=""><img class="logo" src="../static/images/logo.jpg" alt=""></a>
-    <a class="btn btn-outline-primary"  href=""><h1> Logout</h1></a>
+    <a href=""><img class="logo" src="../static/images/logo.jpg" alt="logo"></a>
+    <a class="btn btn-outline-primary"  href="">Logout</a>
     
     
         </nav>
-    <div class="container backgroud-color theall">
+    <div class="container backgroud-color theall my-5">
         <div class="seperator">
-            <div class="decor">
+            <div class="decor p-4 container">
             
-                    <form class="form text-white" action="/region_body" method="post">
+                    <form class="form text-white d-flex flex-column gap-5" action="/region_body" method="post">
                         <div>
-                            <label class="big" for="region">What is the nearest location to you?</label>
+                            <label for="region">What is the nearest location to you?</label>
 
-                            <select class="big form-select" aria-label="Default select example" name="hos_id" id="cars">
+                            <select class="form-select  w-50" aria-label="Default select example" name="hos_id" id="cars">
                             {% for hospital in hospitals %}
                             <option value="{{hospital.id}}">{{hospital.location}}</option>
                             {% endfor %}
@@ -36,8 +36,8 @@
                             </select>
                         </div>
                         <div>
-                            <label class="big" for="body_part">Tell us exactly what part of your body hurts?</label>
-                        <select class="big form-select" aria-label="Default select example" id="cars" name="cat_id">
+                            <label for="body_part">Tell us exactly what part of your body hurts?</label>
+                        <select class="form-select  w-50" aria-label="Default select example" id="cars" name="cat_id">
                             {% for category in categories %}
                             <option value="{{category.id}}">{{category.name}}</option>
                             {% endfor %}
@@ -48,59 +48,41 @@
                         <div>
                             <input class="big btn btn-success" type="submit" value="Submit">
                         </div>
-                    </form>
-                    <div id="symptoms">
-                        <form action="/disease_diag" method="post">
-                            <div>
-                                <label class="big" for="symptoms">symptoms</label>
-                            <select class="big form-select" aria-label="Default select example"  name="id" id="cars">
-                                
-                                {% for disease in session['diseases'] %}
-                                <option value="{{disease.id}}">{{disease.name}}</option>
-                                {% endfor %}
-                                
-                            </select>
-                            </div>
-                            <div>
-                                <input class="big btn btn-success" type="submit" value="let's check">
-                            </div>
-                        </form>
-            
-                    </div>
+                    </form>               
+
                     
-                    
-                    
-                    
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 72px"></textarea>
-                        <label for="floatingTextarea2">Comments</label>
-                    </div>
-                    {% for disease in diseases %}
-                    <p>{{disease.comment}}</p>
-                    {% endfor %}
     
     
                     
-                </div>
-                
-                <div class="slide">
-                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="../static/images/head 1.jpeg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="../static/images/head 2.png" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                    <img src="../static/images/head 3.jpg" class="d-block w-100" alt="...">
-                </div>
-                </div>
             </div>
                 
+                <div class="container">
+
+                    <img class="slide" src="../static/images/{{card.photo}}" alt="hospital photo" class="d-block w-100">
+                    
+                </div>
+            </div>
+            <form action="/disease_diag" method="post">
+                <label class="m-2" for="symptoms">symptoms</label>
+            <select class="big form-select w-50 m-2" aria-label="Default select example"  name="id" id="symptoms">
+                
+                {% for disease in session['diseases'] %}
+                <option value="{{disease.id}}">{{disease.name}}</option>
+                {% endfor %}
+                
+            </select>
+            
+            <div>
+                <input class="big btn btn-success m-2" type="submit" value="let's check">
+            </div>
+        </form>
             </div>
         </div>
+        <div class="container w-50 border border-2 border-secondary my-5 p-2">
+                    <p>Dear Patient, You might suffering <span class="comment">{{session['diseases_name'].comment}}</span> We recommend you to visit our Doctor <a href="/diagnostic/doctor/{{session['doctor'].id}}">{{session['doctor'].first_name}}  {{session['doctor'].last_name}}</a> in Our Hospital {{session['hospital'].name}}</p>
+                
         
+    </div>
 
 
 

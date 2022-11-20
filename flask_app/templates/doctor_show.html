@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Doctor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+</head>
+<body class="bg-secondary bg-opacity-10">
+    <div class="container w-50 my-5">
+        <div class="text-center">
+            <img style="width:600px; height: 350px;" class="rounded my-3" src="{{ url_for('static', filename='images/' + doctor.photo) }}" alt="photo of the hospital">
+
+        </div>
+        <div class="formContainer bg-dark text-white p-3" >
+            <div class="mb-3">
+                <label for="first_name" class="form-label"> My Name:</label>
+                <p>{{doctor.first_name}} {{doctor.last_name}}</p>
+            </div>
+
+            <div class="mb-3">
+                <label for="speciality"class="form-label"> My Speciality:</label>
+                <p>{{doctor.speciality}}</p>
+            </div>
+            <div class="mb-3">
+                <label for="about"class="form-label"> About Me:</label>
+                <p>{{doctor.about}}</p>
+            </div>
+            <a href="/diagnostic/{{session['card_id']}}"><input type="button" class="btn btn-primary" value="Cancel"></a>
+        
+        </div>
+    
+
+    </div> 
+
+    
+</body>
+</html>

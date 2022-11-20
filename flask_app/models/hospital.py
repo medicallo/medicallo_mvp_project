@@ -38,9 +38,9 @@ class Hospital:
         
     @classmethod
     def get_hospital_by_id(cls,data):
-        query="SELECT * FROM hospitals WHERE id = %(id)s ;"
+        query="SELECT * FROM hospitals WHERE id = %(hos_id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
-        return cls(result[0])
+        return result[0]
 
 # UPDATE
     @classmethod

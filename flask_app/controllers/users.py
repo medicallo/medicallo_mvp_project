@@ -15,9 +15,6 @@ def indexr():
     return render_template('login.html')
 
 
-
-
-
 @app.route('/signup',methods=['POST'])
 def register():
     if User.validate_register(request.form)==False:
