@@ -42,7 +42,7 @@ class Disease:
         return result
 
     @classmethod
-    def get_disease(cls,data):
+    def get_one_disease(cls,data):
         query="SELECT * FROM diseases WHERE id = %(id)s ;"
         result = connectToMySQL(cls.db_name).query_db(query,data)
         return result[0]

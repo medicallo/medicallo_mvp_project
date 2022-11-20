@@ -26,17 +26,17 @@
             
                     <form class="form text-white" action="/region_body" method="post">
                         <div>
-                            <label class="big" for="region">region</label>
+                            <label class="big" for="region">What is the nearest location to you?</label>
 
                             <select class="big form-select" aria-label="Default select example" name="hos_id" id="cars">
                             {% for hospital in hospitals %}
-                            <option value="{{hospital.id}}">{{hospital.location}}</option>
+                            <option value="{{hospital.name}}">{{hospital.location}}</option>
                             {% endfor %}
                         
                             </select>
                         </div>
                         <div>
-                            <label class="big" for="body_part">body part</label>
+                            <label class="big" for="body_part">Tell us exactly what part of your body hurts?</label>
                         <select class="big form-select" aria-label="Default select example" id="cars" name="cat_id">
                             {% for category in categories %}
                             <option value="{{category.id}}">{{category.name}}</option>
@@ -46,18 +46,17 @@
 
                         </div>
                         <div>
-                            <button onclick="symptoms()">open</button>
-                            <input onclick="symptoms()" class="big btn btn-success" type="submit" value="Submit">
+                            <input class="big btn btn-success" type="submit" value="Submit">
                         </div>
                     </form>
                     <div id="symptoms">
-                        <form action="" method="post">
+                        <form action="/disease_diag" method="post">
                             <div>
                                 <label class="big" for="symptoms">symptoms</label>
-                            <select class="big form-select" aria-label="Default select example"  name="symptoms" id="cars">
+                            <select class="big form-select" aria-label="Default select example"  name="id" id="cars">
                                 
                                 {% for disease in session['diseases'] %}
-                                <option value="{{disease.id}}">{{disease.first_name}}</option>
+                                <option value="{{disease.id}}">{{disease.name}}</option>
                                 {% endfor %}
                                 
                             </select>
@@ -66,39 +65,42 @@
                                 <input class="big btn btn-success" type="submit" value="let's check">
                             </div>
                         </form>
-
+            
                     </div>
-                        
-                        
-                        
-    
+                    
+                    
+                    
                     
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 72px"></textarea>
                         <label for="floatingTextarea2">Comments</label>
                     </div>
+                    {% for disease in diseases %}
+                    <p>{{disease.comment}}</p>
+                    {% endfor %}
     
     
+                    
+                </div>
                 
-            </div>
-            
-            <div class="slide">
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="../static/images/head 1.jpeg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                    <img src="../static/images/head 2.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
+                <div class="slide">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../static/images/head 1.jpeg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../static/images/head 2.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
                     <img src="../static/images/head 3.jpg" class="d-block w-100" alt="...">
-                    </div>
                 </div>
                 </div>
+            </div>
                 
             </div>
         </div>
+        
 
 
 

@@ -14,10 +14,10 @@ def get_doctors():
     return redirect('/admin/dashboard#doctor')
 
 
-@app.route('/doctor',methods=['POST'])
+@app.route('/doctor_add',methods=['POST'])
 def doctor_create():
     Doctor.create_doctor(request.form)
-    return redirect('/admin/dashboard')
+    return redirect('/admin/dashboard#doctor')
 
 
 

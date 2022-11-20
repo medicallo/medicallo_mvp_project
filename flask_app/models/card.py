@@ -26,15 +26,9 @@ class Card:
         cards=[]
         for row in results:
             cards.append(cls(row))
-        print('*'*20,cards)
         return cards
 
 
-    @classmethod
-    def get_card_by_card_id(cls,data):
-        query="SELECT * FROM cards WHERE card_id = %(card_id)s ;"
-        result = connectToMySQL(cls.db_name).query_db(query,data)
-        return result
 
     @classmethod
     def get_card_by_id(cls,data):

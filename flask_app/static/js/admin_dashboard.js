@@ -53,7 +53,7 @@ function closeForm4() {
 }
 
 // function symptoms() {
-//     document.querySelector("#symptoms").style.display = "inline-block";
+//     document.querySelector("#symptoms").style.display = "block";
 // }
 
 // function myFunction() {

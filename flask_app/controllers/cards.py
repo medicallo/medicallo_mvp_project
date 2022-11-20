@@ -27,8 +27,10 @@ def card_edit():
 @app.route('/card/delete/<int:id>')
 def card_delete(id):
     data={'id':id}
+    print('+'*20,data)
+
     Card.destroy_card(data)
-    print('*'*50,Card.destroy_card(data))
+    print('-'*50,Card.destroy_card(data))
     return redirect('/admin/dashboard#card')
 
 # Edit

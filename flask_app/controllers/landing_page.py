@@ -3,6 +3,7 @@ from flask_app import app
 from flask_app.models.category import Category
 from flask_app.models.card import Card
 from flask_app.models.hospital import Hospital
+from flask_app.models.disease import Disease
 
 @app.route('/home')
 def home():
@@ -23,3 +24,13 @@ def check():
     print('*'*20,session['diseases'])
     card_id=session['card_id']
     return redirect(f'/diagnostic/{card_id}')
+    
+
+    
+# @app.route('/disease_diag',methods=['POST'])
+# def check_disease():
+#     diseases=Disease.get_one_disease(request.form)
+
+
+#     card_id=session['card_id']
+#     return redirect(f'/diagnostic/{card_id}',diseases=diseases)

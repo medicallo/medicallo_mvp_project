@@ -158,7 +158,7 @@
 <!-- Doctor POP-UP -->
 <div class="loginPopup">
     <div class="formPopup" id="popupForm1">
-        <form class="formContainer" action="/doctor" method="post">
+        <form class="formContainer" action="/doctor_add" method="post">
             <div class="mb-3">
             <label class="me-3" for="hospital">Name of The Hospital: </label>
             <select id="hospital" name="hospital_id">
@@ -328,7 +328,6 @@
         <thead class="table-dark">
         <th>Name of disease</th>
         <th>Comment</th>
-        <th>Doctor</th>
         <th>Edit</th>
         <th>Delete</th>
         </thead>
@@ -337,7 +336,6 @@
             <tr>
                 <td>{{disease.name}}</td>
                 <td>{{disease.comment}}</td>
-                <!-- <td>{{session['doctor.f']}}  {{session['doctor.l']}}</td> -->
                 <td><a href="/disease/edit/{{disease.id}}"><button type="button" class="btn btn-success">Edit</button></a></td>
                 <td><a href="/disease/delete/{{disease.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
             

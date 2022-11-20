@@ -9,8 +9,6 @@
 
 }
 .big{
-    height: 40px;
-    width: 120px;
     margin-left: 20px;
     margin-top: 10px;
 }
@@ -25,7 +23,3 @@
     height: 470px;
     width: 500px;
 }
-
-/* #symptoms{
-    display:none;
-} */
