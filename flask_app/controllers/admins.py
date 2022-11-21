@@ -1,7 +1,5 @@
 from flask import Flask, redirect, render_template, session, request,flash
 from flask_app import app
-from flask_bcrypt import Bcrypt
-bcrypt = Bcrypt(app)
 from flask_app.models.admin import Admin
 
 @app.route('/login/admin')
@@ -10,14 +8,17 @@ def indef():
 
 @app.route('/login_admin',methods=['POST'])
 def login_admin():
-    admin = Admin.get_one_by_email(request.form)
+    admin = Admin.get_admin_by_email(request.form)
+    print('**'*20,admin)
+    print('*+'*20,admin['password'])
+    print('*-'*20,request.form['password'])
     if not admin:
         flash("Invalid Email","login")
-        return redirect('/login_admin')
-    if not bcrypt.check_password_hash(admin.password, request.form['password']):
+        return redirect('/login/admin')
+    if not (admin['password'] == request.form['password']):
         flash("Invalid Password","login")
-        return redirect('/login_admin')
-    session['admin_id'] =admin.id
+        return redirect('/login/admin')
+    session['admin_id'] =admin["id"]
     return redirect('/admin_dashboard')
 
 @app.route('/admin_dashboard')
@@ -29,7 +30,7 @@ def dashboard_admin():
     }
     return render_template("admin_dashboard.html")
 
-@app.route('/logout')
+@app.route('/admin_logout')
 def logout_admin():
     session.clear()
     return redirect('/login')

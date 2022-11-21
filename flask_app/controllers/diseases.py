@@ -28,7 +28,7 @@ def disease_read():
 @app.route('/disease/edit/<int:id>')
 def disease_edit_template(id):
     data={'id':id}
-    diseases=Disease.get_disease(data)
+    diseases=Disease.get_one_disease(data)
     print('*'*20,diseases)
 
     return render_template('disease_edit.html',diseases=diseases)

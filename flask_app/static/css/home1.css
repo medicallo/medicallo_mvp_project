@@ -31,26 +31,6 @@ background-image: url("../images/backache.jpg");
 
 }
 
-
-.category3{
-    height: 230px;
-    width: 230px;
-    background-color: rgb(255, 255, 255);
-    background-image: url("../images/skinache.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    }
-.category4{
-    
-    height: 230px;
-    width: 230px;
-    background-color: rgb(255, 255, 255);
-    background-image: url("../images/legsache.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-}
 .options {
     display: flex;
     margin-left: 330px;
