@@ -9,10 +9,11 @@ from flask_app.models.category import Category
 @app.route('/admin/dashboard')
 def admin():
     hospitals=Hospital.get_all_hospital()
-    doctors=Doctor.get_all()
     cards=Card.get_all_card()
     categories=Category.get_all_categories()
-    return render_template('admin_dashboard.html',hospitals=hospitals,doctors=doctors,cards=cards,categories=categories)
+    doctors=Doctor.get_all()
+
+    return render_template('admin_dashboard.html',doctors=doctors,hospitals=hospitals,cards=cards,categories=categories)
 
 # Create
 @app.route('/hospital', methods=['POST'] )

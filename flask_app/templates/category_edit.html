@@ -15,6 +15,8 @@
             <div class="mb-3">
                 <label for="Name" class="form-label">Name:</label>
                 <input type="text" class="form-control" id="Name" name="name" value="{{category.name}}">
+                <input type="hidden" name="id" value="{{category.id}}">
+                <input type="hidden" name="card_id" value="{{category.card_id}}">
             </div>
         <button type="submit" class="btn btn-success add" onclick="closeForm2()">Update</button>
         <a href="/admin/dashboard"><input type="button" class="btn btn-primary" value="Cancel"></a>

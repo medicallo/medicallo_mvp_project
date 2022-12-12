@@ -9,7 +9,7 @@ def get_doctors():
     data ={
         "id":request.form["hospital_id"]
     }
-    session['hospital_name']=Hospital.get_hospital_by_id(data).name
+    session['hospital_name']=Hospital.get_hospital_by_id(data)["name"]
     session['hospital_id']=Doctor.get_doctor_by_hospital_id(request.form)
     return redirect('/admin/dashboard#doctor')
 
@@ -44,11 +44,13 @@ def doctor_edit():
         Doctor.update_doctor(request.form)
     else :
         form = {
+            'id':request.form["id"],
             'first_name': request.form['first_name'],
             'last_name':request.form['last_name'],
             'photo':request.form['old_photo'],
             'speciality':request.form['speciality'],
             'about':request.form['about'],
+            'hospital_id':request.form['hospital_id']
         }
         Doctor.update_doctor(form)
     

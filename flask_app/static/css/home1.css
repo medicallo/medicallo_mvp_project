@@ -8,6 +8,9 @@ border-radius: 10px;
 
 
 }
+.card-img-top{
+    height: 200px;
+}
 .category2{
 height: 230px;
 width: 230px;

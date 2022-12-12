@@ -28,7 +28,7 @@
                         <div>
                             <label for="region">What is the nearest location to you?</label>
 
-                            <select class="form-select  w-50" aria-label="Default select example" name="hos_id" id="cars">
+                            <select class="form-select  w-50" aria-label="Default select example" name="hospital_id" id="cars">
                             {% for hospital in hospitals %}
                             <option value="{{hospital.id}}">{{hospital.location}}</option>
                             {% endfor %}
@@ -37,7 +37,7 @@
                         </div>
                         <div>
                             <label for="body_part">Tell us exactly what part of your body hurts?</label>
-                        <select class="form-select  w-50" aria-label="Default select example" id="cars" name="cat_id">
+                        <select class="form-select  w-50" aria-label="Default select example" id="cars" name="categories_id">
                             {% for category in categories %}
                             <option value="{{category.id}}">{{category.name}}</option>
                             {% endfor %}
@@ -65,11 +65,11 @@
             <form action="/disease_diag" method="post">
                 <label class="m-2" for="symptoms">symptoms</label>
             <select class="big form-select w-50 m-2" aria-label="Default select example"  name="id" id="symptoms">
-                
-                {% for disease in session['diseases'] %}
+
+                {% for disease in session['diseases'] : %}
                 <option value="{{disease.id}}">{{disease.name}}</option>
                 {% endfor %}
-                
+
             </select>
             
             <div>
@@ -78,9 +78,10 @@
         </form>
             </div>
         </div>
+        {%if session['diseases'] and session['diseases_name'] : %}
         <div class="container w-50 border border-2 border-secondary my-5 p-2">
-                    <p>Dear Patient, You might suffering <span class="comment">{{session['diseases_name'].comment}}</span> We recommend you to visit our Doctor <a href="/diagnostic/doctor/{{session['doctor'].id}}">{{session['doctor'].first_name}}  {{session['doctor'].last_name}}</a> in Our Hospital {{session['hospital'].name}}</p>
-                
+            <p>Dear Patient, You might suffering <span class="comment">{{session['diseases_name'].comment}}</span> We recommend you to visit our Doctor <a href="/diagnostic/doctor/{{session['doctor'].id}}">{{session['doctor'].first_name}}  {{session['doctor'].last_name}}</a> in Our Hospital {{session['hospital'].name}}</p>
+            {% endif %}
         
     </div>
 

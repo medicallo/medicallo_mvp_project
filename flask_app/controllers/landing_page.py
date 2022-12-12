@@ -28,9 +28,12 @@ def diagnostic(id):
 
 @app.route('/region_body',methods=['POST'])
 def check():
-    session['diseases']=Hospital.get_hospital_with_doc_disease(request.form)
+    data_disease={"hospitals_id":request.form['hospital_id'],
+            "categories_id":request.form['categories_id']    }
+    session['diseases']=Hospital.get_hospital_with_doc_disease(data_disease)
     card_id=session['card_id']
-    session['hospital']=Hospital.get_hospital_by_id(request.form)
+    data={"id":request.form['hospital_id']}
+    session['hospital']=Hospital.get_hospital_by_id(data)
     return redirect(f'/diagnostic/{card_id}')
 
 
@@ -38,7 +41,7 @@ def check():
 def check_disease():
     session['diseases_name']=Disease.get_one_disease(request.form)
     data_doc={'id':session['diseases_name']['doctor_id']}
-    print('*-'*20,data_doc)
+    print('*-'*20,data_doc,data_doc)
     session['doctor']=Doctor.get_doctor_by_id(data_doc)
     print('*-'*20,session['doctor'])
 

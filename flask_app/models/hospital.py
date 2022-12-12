@@ -57,5 +57,5 @@ class Hospital:
 # JOIN 3 Tables
     @classmethod
     def get_hospital_with_doc_disease(cls,data):
-        query= "SELECT diseases.id ,diseases.name FROM hospitals join doctors on doctors.hospital_id=hospitals.id join diseases on diseases.doctor_id=doctors.id join categories on categories.id=diseases.category_id where hospitals.id=%(hos_id)s and categories.id =%(cat_id)s;"
+        query= "SELECT diseases.id ,diseases.name FROM hospitals join doctors on doctors.hospital_id=hospitals.id join diseases on diseases.doctor_id=doctors.id join categories on categories.id=diseases.category_id where hospitals.id=%(hospitals_id)s and categories.id =%(categories_id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
